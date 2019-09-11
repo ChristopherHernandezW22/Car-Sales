@@ -30,6 +30,16 @@ const reducerState = {
                   }
                 };
             }
+            case "REMOVE_ITEM":
+                return {
+                    ...state,
+                    car: {
+                        ...state.car,
+                        features: state.car.features.filter(feature => (
+                            feature.id !== action.payload.id
+                        ))
+                    }
+                };
             default:
                 return state;
       }
