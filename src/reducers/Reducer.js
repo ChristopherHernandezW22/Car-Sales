@@ -18,8 +18,16 @@ const reducerState = {
   const reducer = (state = reducerState, action) => {
       console.log('action', action);
       switch(action.type) {
-          default:
-              return state;
+          case "BUY_ITEM":
+              return {
+                  ...state,
+                  car: {
+                      ...state.car,
+                      features: [...state.car.features, action.payload]
+                  }
+                };
+            default:
+                return state;
       }
   };
 
