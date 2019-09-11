@@ -19,6 +19,9 @@ const reducerState = {
       console.log('action', action);
       switch(action.type) {
           case "BUY_ITEM":
+              if (state.car.features.find(feature => feature.id === action.payload.id)) {
+                  return state;
+              } else {
               return {
                   ...state,
                   car: {
@@ -26,6 +29,7 @@ const reducerState = {
                       features: [...state.car.features, action.payload]
                   }
                 };
+            }
             default:
                 return state;
       }
